@@ -11,7 +11,7 @@ from llava.mm_utils import get_model_name_from_path
 from llava.eval.run_llava import eval_model, evalmodel
 from llava.utils import disable_torch_init
 from utils import read_json, save_json
-from metric_utils import exact_math, relaxed_correctness
+from metric_utils import exact_math, relaxed_correctness,relaxed_correctness_chartX
 from prompt_utils import prompt_templates
 
 import sys
@@ -124,9 +124,11 @@ if __name__ == '__main__':
     
     if args.metric == 'em':
         metric_function = exact_math
+    elif 'relaxed_cordrectness_chartX' in args.metric:
+        metric_function = relaxed_correctness_chartX
     elif 'relax' in args.metric:
         metric_function = relaxed_correctness
-        
+    
     # tqdm, enumerate results
     correct_count = 0
     total_count = 0

@@ -84,8 +84,22 @@ def relaxed_correctness(prediction, target, max_relative_change: float = 0.05) -
         return prediction_float == target_float
     else:
         return prediction_processed == target_processed
-    
-    
+
+import re
+def extract_number(input_str):
+    numbers = re.findall(r'\b\d+\.?\d*', input_str)
+    if numbers == []:
+        return input_str
+    return numbers[0]
+
+def relaxed_correctness_chartX(prediction, target) -> bool:
+    temp_answer = extract_number(target)
+    temp_response = prediction
+    if temp_response[-1] == "%":
+        temp_response=temp_response[0:-1]
+    temp_judge = relaxed_correctness(temp_response, temp_answer)
+    return temp_judge
+
 if __name__ == '__main__':
     # print(exact_math("8.2.", "8.2"))
     print(relaxed_correctness('4.55e+10.', '4.87e+10.'))

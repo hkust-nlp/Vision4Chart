@@ -1,3 +1,8 @@
 eval_llava/eval_figure_phi/evaluation_mathvista/mathvista_outputs/
 images/
 eval_results/
+results/
+__pycache__/
+mathvista_outputs/
+*.zip
+eval_llava/Math-LLaVA/
