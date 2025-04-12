@@ -3,11 +3,15 @@
 
 <div align="center">
 
-# On the Perception Bottleneck of LVLMs for Chart Understanding
+# On the Perception Bottleneck of VLMs for Chart Understanding
 
 </div>
 
-Welcome! This repository accompanies the paper **On the Perception Bottleneck of LVLMs for Chart Understanding**.
+Welcome! This repository accompanies the paper **On the Perception Bottleneck of VLMs for Chart Understanding**.
+
+<p align="center">
+    <img src="figs/fig1.jpg" type="image/jpg"/>
+<p>
 
 ## What is included in this project?
 
@@ -17,6 +21,7 @@ This repository provides implementations for training and evaluating CLIP and LL
 - **CLIP Evaluation**: Code for evaluating CLIP on various chart-related datasets.
 - **LLaVA Training**: Training scripts for LLaVA-13B and LLaVA-Phi.
 - **LLaVA Evaluation**: Evaluation scripts for LLaVA on multiple chart benchmarks.
+- **CLIP Learning Data**: Data from CLIP contrastive learning on Chart Tasks.
 
 ## Environment Setup
 
@@ -56,3 +61,31 @@ For **FigureQA, DVQA, PlotQA, ChartQA, ChartBench, and ChartX**, evaluation scri
 
 For **MathVista**, evaluation scripts are provided in: [`example_scripts/eval_mathvista.sh`](https://github.com/hkust-nlp/Vision4Chart/blob/main/example_scripts/eval_mathvista.sh).
 
+## Released Resources
+
+#### Dataset
+
+|Model|Link|
+|-|-|
+|ChartCLIP|[🤗](https://huggingface.co/Junteng/Chart_CLIP)|
+
+
+#### Model
+
+|Dataset|Link|
+|-|-|
+|Vision4Chart|[🤗](https://huggingface.co/datasets/Junteng/Vision4Chart)|
+
+## Citation
+If you find this work helpful, please kindly cite as:
+```
+@misc{liu2025perceptionbottleneckvlmschart,
+      title={On the Perception Bottleneck of VLMs for Chart Understanding}, 
+      author={Junteng Liu and Weihao Zeng and Xiwen Zhang and Yijun Wang and Zifei Shan and Junxian He},
+      year={2025},
+      eprint={2503.18435},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2503.18435}, 
+}
+```

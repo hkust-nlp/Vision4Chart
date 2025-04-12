@@ -58,12 +58,35 @@ def rejudge_file(file_path, metric=exact_math, is_extract=False):
         if temp_judge == True:
             correct_num+=1
     print(f"acc: {correct_num/len(data.keys())}")
+    
+def rejudge_chart_bin_file(file_path, metric=exact_math, is_extract=False):
+    data = load_json(file_path=file_path)
+    correct_num=0
+    for k,temp_data in data.items():
+        
+        temp_answer = data[k]['answer'].lower()
+
+        temp_response = data[k]['response'].lower()
+        temp_judge = False
+        if temp_answer in temp_response[:5]:
+            temp_judge = True
+        data[k]['judge'] = temp_judge
+        if temp_judge == True:
+            correct_num+=1
+    print(f"acc: {correct_num/len(data.keys())}")
     # save_json(data, file_path)
 if __name__ == '__main__':
-    model_notion = 'llava-v1.5-13b'
-    file_path = f'eval_llava/eval_data/chartX/eval_results/{model_notion}_responses_sampled.json'
+    model_notion = 'llava-v1.6-mistral-7b-hf'
+    file_path = f'/project/deemreason/junteng/Vision4Math/eval_llava/eval_data/chartbench/eval_results/{model_notion}_bin_responses_sampled.json'
+    rejudge_chart_bin_file(file_path=file_path)
+    model_notion = 'llava-v1.6-vicuna-13b-hf'
+    file_path = f'/project/deemreason/junteng/Vision4Math/eval_llava/eval_data/chartbench/eval_results/{model_notion}_bin_responses_sampled.json'
+    rejudge_chart_bin_file(file_path=file_path)
+    model_notion = 'llama3-llava-next-8b-hf'
+    file_path = f'/project/deemreason/junteng/Vision4Math/eval_llava/eval_data/chartbench/eval_results/{model_notion}_bin_responses_sampled.json'
+    rejudge_chart_bin_file(file_path=file_path)
     # file_path = f'/cfs/hadoop-aipnlp/zengweihao02/hkust-project/Vision4chart/eval_llava/eval_data/chartX/eval_results/{model_notion}_responses_sampled.json'
-    rejudge_file(file_path=file_path, metric=relaxed_correctness, is_extract=True)
+    # rejudge_file(file_path=file_path, metric=relaxed_correctness, is_extract=True)
     # print(extract_number("$100 million"))
     # print(extract_number("25.00% hours"))
     # file_path = '/cfs/hadoop-aipnlp/zengweihao02/hkust-project/Vision4chart/eval_llava/eval_data/chartX/eval_results/llava-v1.5-13b-chart_mixed_v3_250k_responses_sampled.json'

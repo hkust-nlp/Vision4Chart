@@ -6,3 +6,6 @@ __pycache__/
 mathvista_outputs/
 *.zip
 eval_llava/Math-LLaVA/
+jt_scripts/
+outlog/
+wandb/
